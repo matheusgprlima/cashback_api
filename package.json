@@ -26,10 +26,14 @@
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/startup.js",
+    "typeorm": "yarn ts-node ./node_modules/typeorm/cli.js",
     "dev": "ts-node-dev --inspect --respawn --transpile-only --ignore-watch node_modules src/startup.ts",
     "test": "jest"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mssql": "^6.3.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.31"
   }
 }
