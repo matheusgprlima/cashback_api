@@ -6,8 +6,8 @@ import {
   UpdateDateColumn,
   ManyToOne
 } from 'typeorm'
-import { SellerEntity } from './seller'
-import { StatusEntity } from './status'
+import { SellerEntity } from './SellerEntity'
+import { StatusEntity } from './StatusEntity'
 
   @Entity('acquisition')
 export class AcquisitionEntity {
@@ -30,7 +30,7 @@ export class AcquisitionEntity {
     seller!: SellerEntity;
 
     @ManyToOne(() => StatusEntity, (status) => status.Acquisition)
-  status!: StatusEntity;
+    status!: StatusEntity;
 
     @CreateDateColumn()
     createdAt!: string;
