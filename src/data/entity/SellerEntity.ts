@@ -6,12 +6,13 @@ import {
   UpdateDateColumn,
   OneToMany
 } from 'typeorm'
+import { ISeller } from '../../domain/interface/ISeller'
 import { AcquisitionEntity } from './AcquisitionEntity'
 
   @Entity('seller')
-export class SellerEntity {
+export class SellerEntity implements ISeller {
     @PrimaryColumn({ unique: true })
-    public cpf!: string;
+    cpf!: string;
 
     @Column()
     name!: string;

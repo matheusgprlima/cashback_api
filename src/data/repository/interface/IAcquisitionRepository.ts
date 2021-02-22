@@ -1,9 +1,10 @@
 import { IAcquisition } from '../../../domain/interface/IAcquisition'
+import { ISeller } from '../../../domain/interface/ISeller'
 
-export interface ISellerRepository{
+export interface IAcquisitionRepository{
     save(acquisition : IAcquisition):Promise<IAcquisition>
-    findByCode(acquisition:IAcquisition):Promise<IAcquisition>
-    findAll(acquisition:IAcquisition):Promise<IAcquisition>
-    update(acquisition:IAcquisition):Promise<IAcquisition>
-    delete(acquisition:IAcquisition): Promise<IAcquisition>
+    findByCode(acquisition:IAcquisition):Promise<IAcquisition | undefined>
+    findAllByCpf(seller:ISeller):Promise<IAcquisition[]>
+    update(acquisition:Partial<IAcquisition>):Promise<void>
+    delete(acquisition:IAcquisition): Promise<void>
 }

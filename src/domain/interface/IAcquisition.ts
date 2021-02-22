@@ -3,10 +3,10 @@ import { IStatus } from './IStatus'
 
 export interface IAcquisition{
     code:string,
-    value:string,
+    value:number,
     date:Date,
     discount:number,
     cashback:number,
-    sellers: ISeller[],
-    status: IStatus[]
+    seller: ISeller,
+    status: IStatus
 }

@@ -6,10 +6,11 @@ import {
   UpdateDateColumn,
   OneToMany
 } from 'typeorm'
+import { IStatus } from '../../domain/interface/IStatus'
 import { AcquisitionEntity } from './AcquisitionEntity'
 
   @Entity('status')
-export class StatusEntity {
+export class StatusEntity implements IStatus {
     @PrimaryGeneratedColumn()
     id!: number;
 

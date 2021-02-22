@@ -5,6 +5,6 @@ export interface ISeller{
     name:string,
     email:string,
     password:string,
-    acquisition:IAcquisition[]
+    acquisition?:IAcquisition[]
 
 }
