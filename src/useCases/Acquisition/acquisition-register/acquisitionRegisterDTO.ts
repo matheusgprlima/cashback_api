@@ -14,6 +14,9 @@ export class acquisitionRegisterDTO implements IAcquisition {
   }
 
   @IsString()
+    cpf!: string
+
+  @IsString()
     code!: string
 
     @IsNumber()

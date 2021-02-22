@@ -5,6 +5,8 @@ import { StatusRepository } from '../../data/repository/implementation/StatusRep
 import { IAcquisitionRepository } from '../../domain/interface/repository/IAcquisitionRepository'
 import { ISellerRepository } from '../../domain/interface/repository/ISellerRepository'
 import { IStatusRepository } from '../../domain/interface/repository/IStatusRepository'
+import { AcquisitionCashback } from '../../useCases/Acquisition/acquisition-cashback-accumulated/acquisitionCashback'
+import { AcquisitionFindAll } from '../../useCases/Acquisition/acquisition-find-all/acquisitionFindAll'
 import { AcquisitionRegister } from '../../useCases/Acquisition/acquisition-register/acquisitionRegister'
 import { DeleteAcquisition } from '../../useCases/Acquisition/delete-acquisition/deleteAcquisition'
 import { UpdateAcquisition } from '../../useCases/Acquisition/update-acquisition/updateAcquisition'
@@ -42,4 +44,12 @@ container.register<DeleteAcquisition>(
 container.register<UpdateAcquisition>(
   'UpdateAcquisition',
   UpdateAcquisition
+)
+container.register<AcquisitionCashback>(
+  'AcquisitionCashback',
+  AcquisitionCashback
+)
+container.register<AcquisitionFindAll>(
+  'AcquisitionFindAll',
+  AcquisitionFindAll
 )

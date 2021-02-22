@@ -1,7 +1,6 @@
 import { injectable } from 'tsyringe'
 import { getRepository, Repository } from 'typeorm'
 import { IAcquisition } from '../../../domain/interface/entity/IAcquisition'
-import { ISeller } from '../../../domain/interface/entity/ISeller'
 import { AcquisitionEntity } from '../../entity/AcquisitionEntity'
 import { IAcquisitionRepository } from '../../../domain/interface/repository/IAcquisitionRepository'
 
@@ -34,8 +33,8 @@ export class AcquisitionRepository implements IAcquisitionRepository {
     } catch (err) { throw new Error(err) }
   }
 
-  findAllByCpf (seller: ISeller): Promise<IAcquisition[]> {
-    return this.repository.find({ where: { seller: { cpf: seller.cpf } }, relations: ['seller', 'status'] })
+  findAllByCpf (cpf:string): Promise<IAcquisition[]> {
+    return this.repository.find({ where: { seller: { cpf: cpf } }, relations: ['seller', 'status'] })
   }
 
   async update (acquisition: Partial<IAcquisition>): Promise<void> {

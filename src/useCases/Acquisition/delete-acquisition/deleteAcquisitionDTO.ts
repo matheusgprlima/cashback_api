@@ -8,7 +8,7 @@ import {
 import { IAcquisition } from '../../../domain/interface/entity/IAcquisition'
 import { ISeller } from '../../../domain/interface/entity/ISeller'
 import { IStatus } from '../../../domain/interface/entity/IStatus'
-export class acquisitionRegisterDTO implements IAcquisition {
+export class deleteAcquisitionDTO implements IAcquisition {
   constructor (data: Partial<Omit<IAcquisition, 'discount|cashback|seller|status'>>) {
     Object.assign(this, data)
   }
