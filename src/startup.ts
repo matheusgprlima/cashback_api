@@ -2,14 +2,14 @@ import 'reflect-metadata'
 import api from './api'
 import { connectDatabase } from './data/database/databaseConnection'
 
-async function main () {
+async function appInit () {
   await connectDatabase()
   api.init()
   api.server.listen(3000, () =>
-    console.log('Server started')
+    console.log('Server started successfully!')
   )
 }
 
 (async () => {
-  await main()
+  await appInit()
 })()

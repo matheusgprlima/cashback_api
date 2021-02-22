@@ -1,7 +1,7 @@
-import { ISeller } from '../../../domain/interface/ISeller'
+import { ISeller } from '../entity/ISeller'
 
 export interface ISellerRepository{
-    save(seller : ISeller):Promise<ISeller>
+    save(seller : Partial<ISeller>):Promise<ISeller>
     findByCpf(seller:ISeller):Promise<ISeller|undefined>
     update(seller:Partial<ISeller>):void
     delete(seller:ISeller): void

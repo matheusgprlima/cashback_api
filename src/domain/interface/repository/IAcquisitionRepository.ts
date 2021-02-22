@@ -1,5 +1,5 @@
-import { IAcquisition } from '../../../domain/interface/IAcquisition'
-import { ISeller } from '../../../domain/interface/ISeller'
+import { IAcquisition } from '../entity/IAcquisition'
+import { ISeller } from '../entity/ISeller'
 
 export interface IAcquisitionRepository{
     save(acquisition : IAcquisition):Promise<IAcquisition>

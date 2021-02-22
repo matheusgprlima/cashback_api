@@ -4,7 +4,7 @@ import {
   IsEmail,
   IsDate
 } from 'class-validator'
-import { ISeller } from '../../domain/interface/ISeller'
+import { ISeller } from '../../../domain/interface/entity/ISeller'
 export class createSellerDTO implements ISeller {
   constructor (data: Partial<Omit<ISeller, 'password'>>) {
     Object.assign(this, data)

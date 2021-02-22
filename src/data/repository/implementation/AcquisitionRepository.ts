@@ -1,9 +1,9 @@
 import { injectable } from 'tsyringe'
 import { getRepository, Repository } from 'typeorm'
-import { IAcquisition } from '../../../domain/interface/IAcquisition'
-import { ISeller } from '../../../domain/interface/ISeller'
+import { IAcquisition } from '../../../domain/interface/entity/IAcquisition'
+import { ISeller } from '../../../domain/interface/entity/ISeller'
 import { AcquisitionEntity } from '../../entity/AcquisitionEntity'
-import { IAcquisitionRepository } from '../interface/IAcquisitionRepository'
+import { IAcquisitionRepository } from '../../../domain/interface/repository/IAcquisitionRepository'
 
 @injectable()
 export class AcquisitionRepository implements IAcquisitionRepository {

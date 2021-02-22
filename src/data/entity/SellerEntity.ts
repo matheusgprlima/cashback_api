@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany
 } from 'typeorm'
-import { ISeller } from '../../domain/interface/ISeller'
+import { ISeller } from '../../domain/interface/entity/ISeller'
 import { AcquisitionEntity } from './AcquisitionEntity'
 
   @Entity('seller')
