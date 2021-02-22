@@ -34,7 +34,7 @@ export class AcquisitionRegister implements IAcquisitionRegister {
   public async execute (acquisitionInfo: Partial<IAcquisition>, cpf:string) : Promise<IAcquisition> {
     const [seller, status] = await Promise.all([
       this.sellerRepository.findByCpf(cpf),
-      this.statusRepository.findById(cpf === '15350946056' ? '2' : '1')
+      this.statusRepository.findById(cpf === '15350946056' ? '1' : '2')
     ])
 
     if (!seller || !status) {

@@ -5,6 +5,9 @@ import { StatusRepository } from '../../data/repository/implementation/StatusRep
 import { IAcquisitionRepository } from '../../domain/interface/repository/IAcquisitionRepository'
 import { ISellerRepository } from '../../domain/interface/repository/ISellerRepository'
 import { IStatusRepository } from '../../domain/interface/repository/IStatusRepository'
+import { AcquisitionRegister } from '../../useCases/Acquisition/acquisition-register/acquisitionRegister'
+import { DeleteAcquisition } from '../../useCases/Acquisition/delete-acquisition/deleteAcquisition'
+import { UpdateAcquisition } from '../../useCases/Acquisition/update-acquisition/updateAcquisition'
 import { CreateSellerUseCase } from '../../useCases/Seller/create-seller/createSeller'
 import { loginValidationrUseCase } from '../../useCases/Seller/seller-login-validation/loginValidation'
 
@@ -27,4 +30,16 @@ container.register<CreateSellerUseCase>(
 container.register<loginValidationrUseCase>(
   'loginValidationrUseCase',
   loginValidationrUseCase
+)
+container.register<AcquisitionRegister>(
+  'AcquisitionRegister',
+  AcquisitionRegister
+)
+container.register<DeleteAcquisition>(
+  'DeleteAcquisition',
+  DeleteAcquisition
+)
+container.register<UpdateAcquisition>(
+  'UpdateAcquisition',
+  UpdateAcquisition
 )

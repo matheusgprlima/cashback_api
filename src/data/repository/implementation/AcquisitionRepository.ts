@@ -39,7 +39,7 @@ export class AcquisitionRepository implements IAcquisitionRepository {
   }
 
   async update (acquisition: Partial<IAcquisition>): Promise<void> {
-    try { await this.repository.save(acquisition) } catch (err) { throw new Error(err) }
+    try { await this.repository.update(String(acquisition.code), acquisition) } catch (err) { throw new Error(err) }
   }
 
   async delete (acquisition:IAcquisition): Promise<void> {
