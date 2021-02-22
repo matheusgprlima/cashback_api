@@ -6,31 +6,32 @@ import {
   UpdateDateColumn,
   ManyToOne
 } from 'typeorm'
-import { SellerEntity } from './seller'
-import { StatusEntity } from './status'
+import { IAcquisition } from '../../domain/interface/IAcquisition'
+import { SellerEntity } from './SellerEntity'
+import { StatusEntity } from './StatusEntity'
 
   @Entity('acquisition')
-export class AcquisitionEntity {
+export class AcquisitionEntity implements IAcquisition {
     @PrimaryColumn({ unique: true })
-    acquisitionCode!: string;
+    code!: string;
 
     @Column()
-    acquisitionValue!: number;
+    value!: number;
 
     @Column()
-    acquisitionDate!: Date;
+    date!: Date;
 
     @Column()
-    discountPercentage!: number;
+    discount!: number;
 
     @Column()
-    cashbackValue!: number;
+    cashback!: number;
 
     @ManyToOne(() => SellerEntity, (seller) => seller.Acquisition)
     seller!: SellerEntity;
 
     @ManyToOne(() => StatusEntity, (status) => status.Acquisition)
-  status!: StatusEntity;
+    status!: StatusEntity;
 
     @CreateDateColumn()
     createdAt!: string;

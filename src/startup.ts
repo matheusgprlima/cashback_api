@@ -1,10 +1,15 @@
-import {} from 'reflect-metadata'
-import express from 'express'
-import '../src/data/database/databaseConnection'
-const app = express()
+import 'reflect-metadata'
+import api from './api'
+import { connectDatabase } from './data/database/databaseConnection'
 
-app.get('/', (request, response) => {
-  return response.json({ message: 'Hello World' })
-})
+async function main () {
+  await connectDatabase()
+  api.init()
+  api.server.listen(3000, () =>
+    console.log('Server started')
+  )
+}
 
-app.listen(3333)
+(async () => {
+  await main()
+})()
