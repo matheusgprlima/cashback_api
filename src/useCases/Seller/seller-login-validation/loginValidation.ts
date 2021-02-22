@@ -11,7 +11,7 @@ export class loginValidationrUseCase implements ILoginValidation {
 
   public async execute (seller: ISeller) : Promise<ISeller> {
     try {
-      const sellerExist = await this.sellerRepository.findByCpf(seller)
+      const sellerExist = await this.sellerRepository.findByCpf(seller.cpf)
       if (!sellerExist) throw new Error("Seller doesn't exist")
       return sellerExist
     } catch (err) { throw new Error(err) }

@@ -24,9 +24,9 @@ export class SellerRepository implements ISellerRepository {
     }
   }
 
-  async findByCpf (seller:ISeller): Promise<ISeller | undefined> {
+  async findByCpf (cpf:string): Promise<ISeller | undefined> {
     try {
-      const sellerFound = await this.repository.findOne(seller.cpf)
+      const sellerFound = await this.repository.findOne(cpf)
       return sellerFound
     } catch (err) { throw new Error(err) }
   }
