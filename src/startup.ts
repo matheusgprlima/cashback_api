@@ -5,7 +5,7 @@ import './core/dependency-injection'
 async function appInit () {
   await connectDatabase()
   api.init()
-  api.server.listen(3000, () =>
+  api.server.listen(process.env.PORT || 3000, () =>
     console.log('Server started successfully!')
   )
 }
