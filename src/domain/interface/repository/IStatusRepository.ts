@@ -1,4 +1,4 @@
-import { IStatus } from '../../../domain/interface/IStatus'
+import { IStatus } from '../entity/IStatus'
 
 export interface IStatusRepository{
     findAll():Promise<IStatus[]>

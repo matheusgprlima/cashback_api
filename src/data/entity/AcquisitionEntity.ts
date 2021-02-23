@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne
 } from 'typeorm'
-import { IAcquisition } from '../../domain/interface/IAcquisition'
+import { IAcquisition } from '../../domain/interface/entity/IAcquisition'
 import { SellerEntity } from './SellerEntity'
 import { StatusEntity } from './StatusEntity'
 

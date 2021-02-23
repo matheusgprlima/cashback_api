@@ -1,8 +1,8 @@
 import { injectable } from 'tsyringe'
 import { getRepository, Repository } from 'typeorm'
-import { ISeller } from '../../../domain/interface/ISeller'
+import { ISeller } from '../../../domain/interface/entity/ISeller'
 import { SellerEntity } from '../../entity/SellerEntity'
-import { ISellerRepository } from '../interface/ISellerRepository'
+import { ISellerRepository } from '../../../domain/interface/repository/ISellerRepository'
 
 @injectable()
 export class SellerRepository implements ISellerRepository {
@@ -11,7 +11,7 @@ export class SellerRepository implements ISellerRepository {
     this.repository = getRepository(SellerEntity)
   }
 
-  async save (seller: ISeller): Promise<ISeller> {
+  async save (seller: Partial<ISeller>): Promise<ISeller> {
     const exist = await this.repository.findOne(seller.cpf) ? 'Seller already exists' : 'Seller not found'
     if (exist === 'Seller already exists') {
       throw new Error(exist)
@@ -24,9 +24,9 @@ export class SellerRepository implements ISellerRepository {
     }
   }
 
-  async findByCpf (seller:ISeller): Promise<ISeller | undefined> {
+  async findByCpf (cpf:string): Promise<ISeller | undefined> {
     try {
-      const sellerFound = await this.repository.findOne(seller.cpf)
+      const sellerFound = await this.repository.findOne(cpf)
       return sellerFound
     } catch (err) { throw new Error(err) }
   }
