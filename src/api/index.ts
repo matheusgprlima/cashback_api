@@ -9,29 +9,15 @@ import { routingControllersToSpec } from 'routing-controllers-openapi'
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema'
 import { defaultMetadataStorage } from 'class-transformer/storage'
 import { join } from 'path'
-// import { controllers } from './controllers'
 
 class App {
   public server!: Application;
 
   private readonly routingControllersOptions: RoutingControllersOptions = {
     routePrefix: '/api',
-    controllers: [join(__dirname, '/controller/*.ts')],
+    controllers: [join(__dirname, '/controller/*.[tj]s')],
+    cors: true,
     classTransformer: true
-    // authorizationChecker: (action: Action) =>
-    //   new Promise<boolean>((resolve, reject) => {
-    //     this.passport.authenticate('jwt', (err, user) => {
-    //       if (err) {
-    //         return reject(err)
-    //       }
-    //       if (!user) {
-    //         return resolve(false)
-    //       }
-    //       action.request.user = user
-    //       return resolve(true)
-    //     })(action.request, action.response, action.next)
-    //   }),
-    // currentUserChecker: (action: Action) => action.request.user
   };
 
   public init () {

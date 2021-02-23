@@ -5,7 +5,7 @@
     "lib": ["ES6"],                           
     "allowJs": true,                       
     "outDir": "./dist",                      
-    "rootDir": "../cashback_api",                      
+    "rootDir": "./",                      
     "removeComments": true,                
     "strict": true,                           
     "esModuleInterop": true,                            

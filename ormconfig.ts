@@ -9,8 +9,8 @@ const configuration : ConnectionOptions = {
   database: 'cashback_database',
   logging: true,
   migrationsRun: true,
-  entities: [join(__dirname, 'src/data/entity/**/*.ts')],
-  migrations: [join(__dirname, 'src/data/database/migration/**/*.ts')],
+  entities: [join(__dirname, 'src/data/entity/**/*.[tj]s')],
+  migrations: [join(__dirname, 'src/data/database/migration/**/*.[tj]s')],
   cli: {
     migrationsDir: 'src/data/database/migration',
     entitiesDir: 'src/data/entity'
