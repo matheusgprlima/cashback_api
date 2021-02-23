@@ -9,10 +9,10 @@ export class UpdateAcquisition implements IUpdateAcquisition {
         private readonly acquisitionRepository: IAcquisitionRepository
   ) {}
 
-  public async execute (acquisitionInfo: IAcquisition) : Promise<void> {
-    const acquisitionExist = await this.acquisitionRepository.findByCode(acquisitionInfo)
+  public async execute (acquisitionInfo: IAcquisition) : Promise<IAcquisition> {
+    const acquisitionExist = await this.acquisitionRepository.findByCode(acquisitionInfo.code)
     if (!acquisitionExist) { throw new Error('Acquisition doesn\'t exist in our database yet') }
     if (String(acquisitionExist.status.id) === '2') { throw new Error('Acquisition already aproved') }
-    this.acquisitionRepository.update(acquisitionInfo)
+    return this.acquisitionRepository.update(acquisitionInfo)
   }
 }

@@ -3,21 +3,20 @@ import {
   IsString,
   IsNumber,
   IsPositive,
-  IsDate,
-  ValidateNested
+  IsDate
 } from 'class-validator'
 import { IAcquisition } from '../../../domain/interface/entity/IAcquisition'
+import { ISeller } from '../../../domain/interface/entity/ISeller'
 import { IStatus } from '../../../domain/interface/entity/IStatus'
-import { createSellerDTO } from '../../Seller/create-seller/createSellerDTO'
-export class acquisitionRegisterDTO implements IAcquisition {
+export class inputAcquisitionRegister implements IAcquisition {
   constructor (data: Partial<Omit<IAcquisition, 'discount|cashback|seller|status'>>) {
     Object.assign(this, data)
   }
 
-    @IsString()
+  @IsString()
     cpf!: string
 
-    @IsString()
+  @IsString()
     code!: string
 
     @IsNumber()
@@ -28,16 +27,14 @@ export class acquisitionRegisterDTO implements IAcquisition {
     @IsDate()
     date!: Date
 
-    @IsNumber()
-    @IsPositive()
+    @Exclude()
     discount!: number
 
-    @IsNumber()
-    @IsPositive()
+    @Exclude()
     cashback!: number
 
-    @ValidateNested()
-    seller!: createSellerDTO
+    @Exclude()
+    seller!: ISeller
 
     @Exclude()
     status!: IStatus

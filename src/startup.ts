@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import api from './api'
 import { connectDatabase } from './data/database/databaseConnection'
-
+import './core/dependency-injection'
 async function appInit () {
   await connectDatabase()
   api.init()

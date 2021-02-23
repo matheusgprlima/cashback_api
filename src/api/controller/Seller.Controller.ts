@@ -3,8 +3,7 @@ import {
   JsonController,
   OnUndefined,
   Body,
-  HttpCode,
-  Get
+  HttpCode
 } from 'routing-controllers'
 import { ResponseSchema } from 'routing-controllers-openapi'
 import { container } from 'tsyringe'
@@ -12,6 +11,8 @@ import { createSellerDTO } from '../../useCases/Seller/create-seller/createSelle
 import { loginValidationDTO } from '../../useCases/Seller/seller-login-validation/loginValidationDTO'
 import { ICreateUseCase } from '../../useCases/Seller/create-seller/ICreateSeller'
 import { ILoginValidation } from '../../useCases/Seller/seller-login-validation/ILoginValidation'
+import { inputSellerDTO } from '../../useCases/Seller/create-seller/createSellerInput'
+import { inputLogin } from '../../useCases/Seller/seller-login-validation/inputLogin'
 
   @JsonController()
 export class SellerController {
@@ -20,7 +21,7 @@ export class SellerController {
         'CreateSellerUseCase'
       ),
       private readonly loginValidationrUseCase: ILoginValidation = container.resolve(
-        'CreateSellerUseCase'
+        'loginValidationrUseCase'
       )
   ) {}
 
@@ -28,7 +29,7 @@ export class SellerController {
     @HttpCode(200)
     @ResponseSchema(createSellerDTO)
     @OnUndefined(400)
-  public createConsultant (@Body() sellerInfo: createSellerDTO) {
+  public createConsultant (@Body() sellerInfo: inputSellerDTO) {
     const { cpf, email, password } = sellerInfo
 
     if (!cpf) throw new Error('Cpf not provided')
@@ -37,11 +38,11 @@ export class SellerController {
     return this.CreateUseCase.execute(sellerInfo)
   }
 
-  @Get('/signin', { transformResponse: true })
+  @Post('/signin', { transformResponse: true })
   @HttpCode(200)
   @ResponseSchema(loginValidationDTO)
   @OnUndefined(404)
-    public loginValidation (@Body() loginInfo:loginValidationDTO) {
+    public loginValidation (@Body() loginInfo:inputLogin) {
       const { email, password } = loginInfo
       if (!email) throw new Error('email not provided')
       if (!password) throw new Error('password not provided')

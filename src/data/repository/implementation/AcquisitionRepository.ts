@@ -24,9 +24,9 @@ export class AcquisitionRepository implements IAcquisitionRepository {
     }
   }
 
-  async findByCode (acquisition:IAcquisition): Promise<IAcquisition | undefined> {
+  async findByCode (code:string): Promise<IAcquisition | undefined> {
     try {
-      const acquisitionFound = await this.repository.findOne(acquisition.code, {
+      const acquisitionFound = await this.repository.findOne(code, {
         relations: ['seller', 'status']
       })
       return acquisitionFound
@@ -37,14 +37,15 @@ export class AcquisitionRepository implements IAcquisitionRepository {
     return this.repository.find({ where: { seller: { cpf: cpf } }, relations: ['seller', 'status'] })
   }
 
-  async update (acquisition: Partial<IAcquisition>): Promise<void> {
-    try { await this.repository.update(String(acquisition.code), acquisition) } catch (err) { throw new Error(err) }
+  async update (acquisition: Partial<IAcquisition>): Promise<IAcquisition> {
+    console.log(acquisition)
+    try { return this.repository.save(acquisition) } catch (err) { throw new Error(err) }
   }
 
-  async delete (acquisition:IAcquisition): Promise<void> {
-    const exist = await this.repository.findOne(acquisition.code)
+  async delete (code:string): Promise<void> {
+    const exist = await this.repository.findOne(code)
     if (!exist) { throw new Error('No acquisition found') }
-    try { await this.repository.delete(acquisition) } catch (err) {
+    try { await this.repository.delete(code) } catch (err) {
       throw new Error(err)
     }
   }
