@@ -38,7 +38,6 @@ export class AcquisitionRepository implements IAcquisitionRepository {
   }
 
   async update (acquisition: Partial<IAcquisition>): Promise<IAcquisition> {
-    console.log(acquisition)
     try { return this.repository.save(acquisition) } catch (err) { throw new Error(err) }
   }
 
